@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./materials/going_modular/going_modular"
+    ]
+}
