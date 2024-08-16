@@ -162,7 +162,7 @@ def train(model: torch.nn.Module,
                                        loss_fn=loss_fn,
                                        device=device)
 
-        if epoch % 10 == 0:
+        if epoch % 1 == 0:
             print(
                 f"Epoch: {epoch+1} | " 
                 f"train_loss: {train_loss:.4f} | "
