@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt # type: ignore
 import numpy as np # type: ignore
 
 from torch import nn # type: ignore
-
+from PIL import Image
 import os
 import zipfile
 
@@ -199,14 +199,14 @@ def pred_and_plot_image(
     """
 
     # 1. Load in image and convert the tensor values to float32
-    target_image = torchvision.io.read_image(str(image_path)).type(torch.float32)
-
+    # target_image = torchvision.io.read_image(str(image_path)).type(torch.float32)
+    img = Image.open(image_path)
     # 2. Divide the image pixel values by 255 to get them between [0, 1]
-    target_image = target_image / 255.0
+    # target_image = target_image / 255.0
 
     # 3. Transform if necessary
     if transform:
-        target_image = transform(target_image)
+        target_image = transform(img)
 
     # 4. Make sure the model is on the target device
     model.to(device)
@@ -295,7 +295,7 @@ def download_data(source: str,
     return image_path
 
 
-def create_writer(experiment_name: str, model_name: str, extra: str=None) -> torch.utils.tensorboard.writer.SummaryWriter():
+def create_writer(experiment_name: str, model_name: str, extra: str=None) -> torch.utils.tensorboard.writer.SummaryWriter(): # type: ignore
     """
     creates a torch.utils.tensorboard.writer.SummaryWriter() instance saving to a
     specific log_dir.
