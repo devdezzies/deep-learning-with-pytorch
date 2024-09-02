@@ -26,7 +26,7 @@ def train_step(model: torch.nn.Module,
     returns:
         a tuple of training loss and training accuracy metrics
         in the form (train_loss, train_accuracy)
-    """\
+    """
     # put the model into training mode
     model.train()
     
